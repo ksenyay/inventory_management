@@ -1,0 +1,19 @@
+{
+  "name": "inventory_management",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.10",
+    "pg": "^8.16.0"
+  }
+}
