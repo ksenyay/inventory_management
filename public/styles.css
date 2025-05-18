@@ -1,0 +1,357 @@
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  /* 4. Add accessible line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* LAYOUT */
+
+body {
+  background-color: #f3f4f6;
+  font-size: 14px;
+  color: #1f2937;
+}
+
+main {
+  background-color: #ffffff;
+  min-height: 85vh;
+  max-width: 800px;
+  min-width: 250px;
+  border-radius: 20px;
+  margin: 50px auto;
+  padding: 25px;
+}
+
+button {
+  background-color: #3b82f6;
+}
+
+a {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+/* HEADER */
+
+header {
+  width: 100%;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  padding-bottom: 15px;
+}
+
+.header-container img {
+  width: 40px;
+  height: 40px;
+  margin: 0 5px;
+}
+
+.header-container button {
+  margin-left: auto;
+}
+
+.header-container .back img {
+  width: 27px;
+  height: auto;
+  margin: 0 5px;
+  transition: transform ease-in-out 0.2s;
+}
+
+.header-container .back img:hover {
+  transform: scale(1.15);
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 0 15px;
+  color: white;
+  font-size: 1.1em;
+  height: 37px;
+  transition: background-color ease-in-out 0.2s;
+}
+button:hover {
+  cursor: pointer;
+  background-color: #2563eb;
+}
+
+/* PRODUCTS */
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  min-width: 750px;
+  margin-top: 15px;
+  border-radius: 5px;
+  overflow: hidden;
+  font-weight: 400;
+  margin-bottom: 15px;
+  border-collapse: collapse;
+  font-size: 1.1em;
+  color: #3c4149;
+}
+
+th {
+  background-color: #f1f5f7;
+  font-weight: normal;
+}
+
+td,
+th {
+  text-align: start;
+  padding: 7px 5px;
+  border-bottom: 1px solid #e5e7eb;
+  width: 120px;
+}
+
+td:first-child,
+th:first-child {
+  width: 60px;
+  padding-left: 20px;
+}
+
+td:nth-child(2),
+th:nth-child(2) {
+  width: 170px;
+  padding-left: 20px;
+}
+
+td:nth-child(3),
+th:nth-child(3) {
+  width: 200px;
+  padding-left: 20px;
+}
+
+thead,
+tbody {
+  border: 1px solid #e5e7eb;
+  padding-bottom: 50px;
+}
+
+.products h2 {
+  font-size: 2.3em;
+  padding: 15px 1px;
+}
+
+/* FILTERS */
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+  color: #3c4352;
+}
+
+.filters > *,
+input,
+select {
+  outline: none;
+  border: 1px solid #d9dbe0;
+  padding: 7px 10px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+input::placeholder {
+  color: #3c4352;
+}
+select {
+  background-color: white;
+  color: #3c4352;
+  cursor: pointer;
+}
+
+@media (min-width: 480px) {
+  .filters {
+    flex-direction: row;
+  }
+
+  .filters > * {
+    width: 250px;
+  }
+}
+
+/* FORM */
+
+form {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 375px;
+  gap: 12px;
+  margin-top: 30px;
+  color: #3c4352;
+  font-size: 1.2em;
+}
+
+form h2 {
+  font-size: 1.6em;
+}
+
+form button {
+  margin-top: 10px;
+
+  font-size: 1em;
+}
+
+.product-numbers {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 13px;
+  width: 100%;
+}
+
+.product-numbers input {
+  width: 70px;
+}
+
+.back {
+  margin-left: auto;
+  margin-right: 5px;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* CATEGORIES EDITOR */
+
+.edit-categories:hover {
+  color: #2563eb;
+}
+
+.categories-editor {
+  border-top: 1px solid #d9dbe0;
+  border-bottom: 1px solid #d9dbe0;
+  padding: 10px 0 20px 0;
+  display: none;
+}
+
+.categories-editor li {
+  list-style: none;
+  padding: 2px;
+}
+
+.categories-editor ul {
+  padding-left: 0;
+}
+
+.categories-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.categories-list svg {
+  margin-left: auto;
+  width: 13px;
+  height: 13px;
+}
+
+.categories-list:has(svg:hover) li {
+  color: red;
+}
+.categories-list svg:hover {
+  fill: red;
+  cursor: pointer;
+}
+
+.input-category {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.input-category input {
+  width: 100%;
+}
+
+.input-category button {
+  margin: 0;
+}

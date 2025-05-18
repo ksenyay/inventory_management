@@ -2,7 +2,24 @@
 <html lang="en">
  <%- include('./partials/head.ejs') %>
 <body>
-    <h1>hello</h1>
-    <%- include('./partials/footer.ejs') %>
+    <main>
+        <header>
+            <div class="header-container">
+                <img src="/nature.png" alt="leaf">
+                <button class="add-product">+ Add Product</button>
+            </div>
+        </header>
+        <section class="products">
+            <h2>Products Inventory</h2>
+            <%- include('./partials/inventory/filters.ejs') %>
+            <%- include('./partials/inventory/products.ejs') %>
+        </section>
+    </main>
+    <script>
+        const addButton = document.querySelector('.add-product');
+        addButton.addEventListener('click', () => {
+            window.location.href = '/new';
+        });
+    </script>
 </body>
 </html>

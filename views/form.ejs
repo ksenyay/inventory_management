@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+ <%- include('./partials/head.ejs') %>
+<body>
+    <main>
+        <header>
+            <div class="header-container">
+                <img src="/nature.png" class="logo" alt="leaf">
+                <a href="/" class="back"><img src="/back.png" alt="back-arrow"></a>
+            </div>
+        </header>
+     
+        <form action="/" method="post">
+            <h2>Add New Product</h2>
+            <label for="name">Product Name</label>
+            <input type="text" id="name" name="product_name">
+             <select id="category" name="category">
+                <option value="indoor-plants">Indoor Plants</option>
+                <option value="outdoor-plants">Outdoor Plants</option>
+                <option value="succulents-cacti">Succulents & Cacti</option>
+                <option value="flowering -plants">Flowering Plants</option>
+                <option value="herbs-edible-plants">Herbs & Edible Plants</option>
+                <option value="trees-large-lants">Trees & Large Plants</option>
+            </select>
+            <a href="" class="edit-categories">Edit categories</a>
+            <div class="categories-editor">
+                <ul>
+                    <% categories.map((item) => { %>
+                    <div class="categories-list">
+                        <li><%= item %> </li>
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 24 24">
+                            <path d="M 4.7070312 3.2929688 L 3.2929688 4.7070312 L 10.585938 12 L 3.2929688 19.292969 L 4.7070312 20.707031 L 12 13.414062 L 19.292969 20.707031 L 20.707031 19.292969 L 13.414062 12 L 20.707031 4.7070312 L 19.292969 3.2929688 L 12 10.585938 L 4.7070312 3.2929688 z"></path>
+                        </svg>
+                    </div>
+
+                    <% }); %>
+                </ul>
+                <div class="input-category">
+                    <input type="text" id="add-category">
+                    <button>Add</button>
+                </div>
+
+            </div>
+            <div class="product-numbers">
+                <label for="stock">Stock</label>
+                <input type="number" id="stock" name="stock" min="1" max="99">
+                <label for="price">Price</label>
+                <input type="number" id="price" name="price" min="1" max="999"><span>$</span>
+            </div>
+            <button class="save-changes ">Save changes</button>
+        </form>
+    </main>
+    <script>
+        const addButton = document.querySelector('.save-changes');
+        const editCategories = document.querySelector('.edit-categories')
+        const categoriesEditor = document.querySelector('.categories-editor')
+
+        // button to go back to main from form
+        addButton.addEventListener('click', (e) => {
+            e.preventDefault()
+            window.location.href = '/';
+        });
+
+        // categories editor menu
+        editCategories.addEventListener('click', (e) => {
+            e.preventDefault()
+            const isActive = categoriesEditor.classList.toggle('active');
+            editCategories.textContent = 'Close'
+            categoriesEditor.style.display = isActive ? 'block' : 'none';
+            editCategories.textContent = isActive ? 'Close' : 'Edit categories';
+        })
+    </script>
+</body>
+</html>
