@@ -3,54 +3,93 @@ const queries = require("../models/queries");
 // PRODUCTS
 
 const index_get = async (req, res) => {
-  const products = await queries.getAllProducts();
-  const categories = await queries.getAllCategories();
-  res.render("index", { products, categories });
+  try {
+    const products = await queries.getAllProducts();
+    const categories = await queries.getAllCategories();
+    res.render("index", { products, categories });
+  } catch (err) {
+    console.error("index_get error:", err);
+    res.status(500).send("Internal Server Error");
+  }
 };
 
 const product_get = async (req, res) => {
-  const product = await queries.getProductById(req.params.id);
-  const categories = await queries.getAllCategories();
-  res.render("edit", { product, categories });
+  try {
+    const product = await queries.getProductById(req.params.id);
+    const categories = await queries.getAllCategories();
+    res.render("edit", { product, categories });
+  } catch (err) {
+    console.error("product_get error:", err);
+    res.status(500).send("Internal Server Error");
+  }
 };
 
 const product_post = async (req, res) => {
-  const { product_name, category, stock, price } = req.body;
-  await queries.insertProduct(product_name, category, stock, price);
-  res.redirect("/");
+  try {
+    const { product_name, category, stock, price } = req.body;
+    await queries.insertProduct(product_name, category, stock, price);
+    res.redirect("/");
+  } catch (err) {
+    console.error("product_post error:", err);
+    res.status(500).send("Internal Server Error");
+  }
 };
 
 const product_put = async (req, res) => {
-  const { product_name, category, stock, price } = req.body;
-  const product_id = req.params.id;
-
-  await queries.editProduct(product_name, category, stock, price, product_id);
-  res.redirect("/");
+  try {
+    const { product_name, category, stock, price } = req.body;
+    const product_id = req.params.id;
+    await queries.editProduct(product_name, category, stock, price, product_id);
+    res.redirect("/");
+  } catch (err) {
+    console.error("product_put error:", err);
+    res.status(500).send("Internal Server Error");
+  }
 };
 
 const product_delete = async (req, res) => {
-  const id = req.params.id;
-  await queries.deleteProduct(id);
-  res.sendStatus(204);
+  try {
+    const id = req.params.id;
+    await queries.deleteProduct(id);
+    res.sendStatus(204);
+  } catch (err) {
+    console.error("product_delete error:", err);
+    res.status(500).send("Internal Server Error");
+  }
 };
 
 // CATEGORIES
 
 const category_get = async (req, res) => {
-  const categories = await queries.getAllCategories();
-  res.render("form", { categories });
+  try {
+    const categories = await queries.getAllCategories();
+    res.render("form", { categories });
+  } catch (err) {
+    console.error("category_get error:", err);
+    res.status(500).send("Internal Server Error");
+  }
 };
 
 const category_post = async (req, res) => {
-  const { category_name } = req.body;
-  await queries.insertCategory(category_name);
-  res.redirect("/category/new");
+  try {
+    const { category_name } = req.body;
+    await queries.insertCategory(category_name);
+    res.redirect("/category/new");
+  } catch (err) {
+    console.error("category_post error:", err);
+    res.status(500).send("Internal Server Error");
+  }
 };
 
 const category_delete = async (req, res) => {
-  const id = req.params.id;
-  await queries.removeCategory(id);
-  res.sendStatus(204);
+  try {
+    const id = req.params.id;
+    await queries.removeCategory(id);
+    res.sendStatus(204);
+  } catch (err) {
+    console.error("category_delete error:", err);
+    res.status(500).send("Internal Server Error");
+  }
 };
 
 module.exports = {
