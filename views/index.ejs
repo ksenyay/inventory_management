@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
- <%- include('./partials/head.ejs') %>
+<%- include('./partials/elements/head.ejs') %>
 <body>
-    <main>
-        <header>
-            <div class="header-container">
-                <img src="/nature.png" alt="leaf">
-                <button class="add-product">+ Add Product</button>
-            </div>
-        </header>
-        <section class="products">
-            <h2>Products Inventory</h2>
-            <%- include('./partials/inventory/filters.ejs') %>
-            <%- include('./partials/inventory/products.ejs') %>
-        </section>
-    </main>
-    <script>
-        const addButton = document.querySelector('.add-product');
-        addButton.addEventListener('click', () => {
-            window.location.href = '/new';
-        });
-    </script>
+  <main>
+    <%- include('./partials/elements/header.ejs') %>
+    <section class="products">
+      <h2>Products Inventory</h2>
+      <%- include('./partials/inventory/products.ejs') %>
+    </section>
+  </main>
+  <script>
+    // Redirect to /new when clicking the Add Product button
+    const addButton = document.querySelector('.add-product');
+    addButton.addEventListener('click', () => {
+      window.location.href = '/category/new';
+    });
+  </script>
 </body>
 </html>

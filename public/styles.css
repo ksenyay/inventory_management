@@ -101,6 +101,15 @@ a {
   text-decoration: none;
 }
 
+@media (max-width: 481px) {
+  body {
+    background-color: #ffff;
+  }
+  main {
+    margin: 0;
+  }
+}
+
 /* HEADER */
 
 header {
@@ -151,18 +160,26 @@ button:hover {
   background-color: #2563eb;
 }
 
+input {
+  color: #3c4352;
+}
 /* PRODUCTS */
 
 .table-container {
   width: 100%;
   overflow-x: auto;
 }
+@media (min-width: 768px) {
+  .table-container {
+    max-height: 600px;
+  }
+}
 
 table {
   min-width: 750px;
   margin-top: 15px;
   border-radius: 5px;
-  overflow: hidden;
+  overflow: auto;
   font-weight: 400;
   margin-bottom: 15px;
   border-collapse: collapse;
@@ -270,7 +287,6 @@ form h2 {
 
 form button {
   margin-top: 10px;
-
   font-size: 1em;
 }
 
@@ -305,7 +321,6 @@ form button {
 
 .categories-editor {
   border-top: 1px solid #d9dbe0;
-  border-bottom: 1px solid #d9dbe0;
   padding: 10px 0 20px 0;
   display: none;
 }
@@ -338,10 +353,15 @@ form button {
   fill: red;
   cursor: pointer;
 }
-
+.categories-container {
+  max-width: 375px;
+  margin: 0 auto;
+  color: #3c4352;
+  font-size: 1.15em;
+  margin-top: 10px;
+}
 .input-category {
   margin-top: 10px;
-  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -354,4 +374,14 @@ form button {
 
 .input-category button {
   margin: 0;
+  font-size: 0.8em;
+}
+
+.delete-product {
+  background-color: #d56060;
+  margin-top: -5px;
+}
+
+.delete-product:hover {
+  background-color: #c54d4d;
 }

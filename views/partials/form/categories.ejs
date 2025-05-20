@@ -1,0 +1,43 @@
+<div class="categories-container">
+    <a href="#" class="edit-categories">Edit categories</a>
+    <div class="categories-editor">
+        <ul>
+            <% categories.map((item) => { %>
+            <div class="categories-list">
+                <li id="<%= item.category_id %>"><%= item.name %> </li>
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 24 24">
+                    <path d="M 4.7070312 3.2929688 L 3.2929688 4.7070312 L 10.585938 12 L 3.2929688 19.292969 L 4.7070312 20.707031 L 12 13.414062 L 19.292969 20.707031 L 20.707031 19.292969 L 13.414062 12 L 20.707031 4.7070312 L 19.292969 3.2929688 L 12 10.585938 L 4.7070312 3.2929688 z"></path>
+                </svg>
+            </div>
+            <% }); %>
+        </ul>
+        <form class="input-category" method="post" action="/category/new">
+            <input type="text" id="add-category" name="category_name">
+            <button>Add</button>
+        </form>
+    </div>
+</div>
+<script>
+     const addButton = document.querySelector('.save-changes');
+    const editCategories = document.querySelector('.edit-categories')
+    const categoriesEditor = document.querySelector('.categories-editor')
+
+    // categories editor menu
+    editCategories.addEventListener('click', (e) => {
+        e.preventDefault()
+        const isActive = categoriesEditor.classList.toggle('active');
+        editCategories.textContent = 'Close'
+        categoriesEditor.style.display = isActive ? 'block' : 'none';
+        editCategories.textContent = isActive ? 'Close' : 'Edit categories';
+    })
+    
+    document.querySelectorAll('.categories-list svg').forEach(svg => {
+        svg.addEventListener('click', async (e) => {
+            const id = e.currentTarget.previousElementSibling.id;
+            const res = await fetch(`/category/${id}`, { method: 'DELETE' })
+            if (res.ok) {window.location.href = '/category/new'} else {
+                alert("You cannot delete the category with items inside!")
+            }; 
+        });
+    });
+</script>

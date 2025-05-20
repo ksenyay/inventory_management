@@ -1,3 +1,12 @@
+<div class="filters">
+    <input type="search" placeholder="Search">
+    <select id="category" name="category">
+        <option value="">All Categories</option>
+        <% categories.forEach(c => { %>
+            <option value="<%= c.name %>"><%= c.name %></option>
+        <% }) %>
+    </select>
+</div>    
 <div class="table-container">
     <table>
         <thead>
@@ -9,24 +18,42 @@
                 <th>Price</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Monstera Deliciosa</td>
-                <td>Herbs & Edible Plants</td>
-                <td>15</td>
-                <td>$25.00</td>
-                <td><a href="">Edit</a></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Spider Plant</td>
-                <td>Succulent</td>
-                <td>3</td>
-                <td>$20.00</td>
-                <td><a href="">Edit</a></td>
-            </tr>
+        </thead> 
+        <tbody>           
+            <% products.map((item) => { %>
+                <tr>
+                    <td><%= item.product_id %></td>
+                    <td><%= item.name %></td>
+                    <td><%= item.category %></td> 
+                    <td><%= item.stock %></td>
+                    <td>$<%= item.price %></td>
+                    <td><a href="/product/<%= item.product_id %>">Edit</a></td>
+                </tr>
+            <% }) %>
         </tbody>
     </table>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const categorySelect = document.getElementById('category');
+  const rows = document.querySelectorAll('.table-container tbody tr');
+
+  const toggleRow = (row, show) => {
+    row.style.display = show ? '' : 'none';
+  };
+
+  const filterByCategory = () => {
+    const selected = categorySelect.value;          
+
+    rows.forEach(row => {
+      const cellValue = row.children[2].textContent;
+      const shouldShow = selected === '' || cellValue === selected;
+      toggleRow(row, shouldShow);
+    });
+  };
+
+  filterByCategory();
+
+  categorySelect.addEventListener('change', filterByCategory);
+});
+</script>

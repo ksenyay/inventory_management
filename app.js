@@ -7,8 +7,9 @@ const app = express();
 
 // Middleware
 app.use(express.static("public"));
-app.use(express.urlencoded({ extended: true }));
+
 app.use(morgan("dev"));
+app.use(express.urlencoded({ extended: true }));
 
 // Set view engine
 app.set("view engine", "ejs");
