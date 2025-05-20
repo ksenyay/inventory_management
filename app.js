@@ -1,6 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const routes = require("./routes/inventoryRoutes");
+require("dotenv").config();
 
 // Initiate an express app
 const app = express();
