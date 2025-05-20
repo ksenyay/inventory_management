@@ -19,7 +19,7 @@ app.set("view engine", "ejs");
 app.use("/", routes);
 
 // Listening to the server
-const PORT = process.env.PORT;
-app.listen(PORT, () => {
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`The server is running at http://localhost:${PORT}`);
 });
