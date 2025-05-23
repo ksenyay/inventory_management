@@ -296,11 +296,14 @@ form button {
   flex-direction: row;
   align-items: center;
   gap: 13px;
-  width: 100%;
 }
 
-.product-numbers input {
-  width: 70px;
+#price {
+  width: 90px;
+}
+
+#stock {
+  width: 60px;
 }
 
 .back {
