@@ -296,14 +296,18 @@ form button {
   flex-direction: row;
   align-items: center;
   gap: 13px;
+
+  max-width: 375px;
 }
 
 #price {
-  width: 90px;
+  max-width: 90px;
+  min-width: 70px;
 }
 
 #stock {
-  width: 60px;
+  max-width: 60px;
+  min-width: 50px;
 }
 
 .back {

@@ -20,7 +20,6 @@ app.set("view engine", "ejs");
 app.use("/", routes);
 
 // Database setup
-
 async function initDb() {
   try {
     await pool.query(
